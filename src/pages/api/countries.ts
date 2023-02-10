@@ -36,6 +36,6 @@ export default async function handler(
       const response = await axios.get(`https://restcountries.com/v2/lang/${lang}`);
       return res.status(200).json(response.data);
   } catch (error) {
-      return res.status(500);
+      return res.status(200).json([]);
   }
 }
