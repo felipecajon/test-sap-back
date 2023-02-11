@@ -1,0 +1,34 @@
+_schema-version: '3.1'
+ID: test-sap-back
+version: 0.1.0
+description: "test-sap-back"
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm run build && npm run start
+modules:
+  - name: test-sap-back-srv
+    type: nodejs
+    path: src
+    parameters:
+      memory: 1024M
+      disk-quota: 256M
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm-ci
+    requires:
+      - name: Destinations
+    provides:
+      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+resources:
+  - name: Destinations
+    parameters:
+      service-plan: lite
+      service: destination
+    type: org.cloudfoundry.managed-service
+
