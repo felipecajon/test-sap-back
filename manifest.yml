@@ -1,5 +1,5 @@
 applications:
-  - name: teste-service
+  - name: test-sap-back
     path: ./
     buildpacks:
       - nodejs_buildpack
@@ -8,3 +8,4 @@ applications:
     random-route: true
     services:
       - Destinations
+      - my-xsuaa

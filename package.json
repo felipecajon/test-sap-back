@@ -6,10 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean-node": "rm -rf node_modules && rm package-lock.json",
+    "deploy": "npm run build && cf push"
   },
   "dependencies": {
     "@next/font": "13.1.6",
+    "@sap-cloud-sdk/core": "^1.54.2",
+    "@sap/hdbext": "^7.6.6",
+    "@sap/xsenv": "^3.4.0",
+    "@sap/xssec": "^3.2.13",
     "@types/node": "18.13.0",
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
@@ -20,14 +26,13 @@
     "nextjs-cors": "^2.1.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "4.9.5",
-    "@sap-cloud-sdk/core": "^1.54.2"
-  },
-  "engines": {
-    "node": "^14.18.x"
+    "typescript": "4.9.5"
   },
   "devDependencies": {
     "@sap-cloud-sdk/test-util": "^2.9.0"
+  },
+  "engines": {
+    "node": "^14.18.x"
   },
   "browser": {
     "fs": false,
